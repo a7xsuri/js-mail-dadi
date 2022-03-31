@@ -1,12 +1,20 @@
-const UtentsListEmail = ['paolo@paolo.it','chiara@chiara.it','enrico@enrico.it'];
-const UtentEmail = prompt('inserisci il tuo indirizzo email');
-for (i=0;i<UtentsListEmail.length;i++){
-    if(UtentEmail == UtentsListEmail[i]){
-        let mex = "l'email è nella lista";
-        document.querySelector(".messaggio").innerHTML = mex;
-        break;
-    } else if (UtentEmail != UtentsListEmail[i]) {
-        let mex = "l'email non è nella lista";
-        document.querySelector(".messaggio").innerHTML = mex;
+const UtentsEmailList = ['ciao@ciao.it', 'paolo@paolo.it', 'riccardo@riccardo.it'];
+let UtentEmail = document.getElementById('mail');
+const BottoneVerifica = document.querySelector('.btn-danger');
+let email = false; 
+
+function VerificationEmail(){
+    for(i=0;i<=UtentsEmailList.length;i++){
+       if(UtentEmail.value === UtentsEmailList[i]){
+            email = true;
+       } else {
+            document.getElementById('answer').innerHTML = 'accesso negato';
+       }
+    }
+    if (email){
+        document.getElementById('answer').innerHTML = 'accesso consentito';
     }
 }
+
+BottoneVerifica.addEventListener('click', VerificationEmail);
+
